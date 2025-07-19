@@ -7,7 +7,7 @@ import java.util.List;
 
 public class CardPage {
 
-    Card card;
+
     TrelloApi trelloApi;
     public CardPage(TrelloApi trelloApi){
       this.trelloApi= trelloApi ;
@@ -16,8 +16,8 @@ public class CardPage {
 
     public Card createCard(String firstListID, String cardName)
     {
-        card = trelloApi.createCard( firstListID,  cardName);
-        return  card;
+        return trelloApi.createCard( firstListID,  cardName);
+
     }
     public void updateCard(String cardId,String cardNewName)
     {

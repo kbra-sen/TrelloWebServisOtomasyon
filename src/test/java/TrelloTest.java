@@ -30,20 +30,19 @@ public class TrelloTest {
         listID = trelloApi.getFirstListIdOnBoard(board.getId());
 
     }
-    @Test
-    public  void createCard(){
+    @BeforeEach
+    public  void createCardBeforeEach(){
         firstCard= cardPage.createCard(listID,"CARD A");
         secondCard= cardPage.createCard(listID,"CARD B");
-        Assertions.assertNotNull(firstCard,"İlk card oluşturuldu.");
-        Assertions.assertNotNull(secondCard,"İkinci card oluşturuldu.");
+         }
+    @Test
+    public  void createCard(){
         Assertions.assertFalse(firstCard.getCardId().isEmpty(),"İlk card oluşturulamadı.");
         Assertions.assertFalse(secondCard.getCardId().isEmpty(),"İkinci card oluşturulamadı.");
     }
     @Test
     public void RandomSelectedCartUpdate()
     {
-        firstCard= cardPage.createCard(listID,"CARD A");
-        secondCard= cardPage.createCard(listID,"CARD B");
         Card selectedCard= (Math.random() > 0.5) ? firstCard : secondCard;
         String selectedCardId=selectedCard.getCardId();
         String newName="Yeni card ismi";
